@@ -1,0 +1,38 @@
+CREATE DATABASE StudentDB;
+USE StudentDB;
+CREATE TABLE Student
+(
+    Student_ID INT PRIMARY KEY,
+    Student_Name VARCHAR(50),
+    Age INT,
+    Gender VARCHAR(10),
+    Department VARCHAR(30),
+    City VARCHAR(30)
+);
+
+INSERT INTO Student VALUES
+(101,'Abi',19,'Female','B.Sc IT','Chennai'),
+(102,'Jaya',21,'Female','BCA','Madurai'),
+(103,'Fows',22,'Female','B.Sc CS','Coimbatore'),
+(104,'Ruthu',20,'Female','B.Com','Salem'),
+(105,'Nithya',23,'Female','B.Sc IT','Trichy'),
+(106,'Riji',18,'Female','B.Sc Maths','Erode'),
+(107,'Ishu',24,'Female','BCA','Vellore'),
+(108,'Nisha',21,'Female','B.Sc CS','Villupuram'),
+(109,'Rohini',20,'Female','B.Sc Physics','Tirunelveli'),
+(110,'Nandhini',22,'Female','B.Sc IT','Chennai');
+
+SELECT * FROM Student;
+
+UPDATE Student
+SET City='Bangalore'
+WHERE Student_ID=105;
+SELECT * FROM Student WHERE Student_ID=105;
+ALTER TABLE Student
+ADD Email VARCHAR(50);
+DESC Student;
+DELETE FROM Student
+WHERE Student_ID=106;
+SELECT * FROM Student;
+SELECT * FROM Student
+WHERE Age > 20;
