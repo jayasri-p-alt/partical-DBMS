@@ -1,0 +1,23 @@
+-- Create a table
+CREATE TABLE Student (
+    ID INT,
+    Name VARCHAR(50)
+);
+
+-- Insert a record
+INSERT INTO Student VALUES (1, 'Jayasri');
+
+-- 1. COMMIT: Save changes permanently
+COMMIT;
+
+-- 2. SAVEPOINT: Create a savepoint
+SAVEPOINT S1;
+
+-- Insert another record
+INSERT INTO Student VALUES (2, 'Priya');
+
+-- 3. ROLLBACK: Undo changes after savepoint
+ROLLBACK TO S1;
+
+-- 4. ROLLBACK: Undo uncommitted changes
+ROLLBACK;
