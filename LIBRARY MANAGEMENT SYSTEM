@@ -1,0 +1,35 @@
+
+-- Create Book Table
+CREATE TABLE Book (
+    Book_ID INT PRIMARY KEY,
+    Book_Name VARCHAR(50),
+    Author VARCHAR(30),
+    Status VARCHAR(20)
+);
+
+-- Insert Records
+INSERT INTO Book VALUES
+(1, 'Python', 'Guido', 'Available'),
+(2, 'Java', 'James', 'Available'),
+(3, 'SQL', 'Date', 'Issued');
+
+-- Display All Books
+SELECT * FROM Book;
+
+-- Issue a Book
+UPDATE Book
+SET Status = 'Issued'
+WHERE Book_ID = 1;
+
+-- Return a Book
+UPDATE Book
+SET Status = 'Available'
+WHERE Book_ID = 3;
+
+-- Search for a Book
+SELECT * FROM Book
+WHERE Book_Name = 'Java';
+
+-- Display Available Books
+SELECT * FROM Book
+WHERE Status = 'Available';
