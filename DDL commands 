@@ -1,0 +1,19 @@
+-- 1. CREATE: Create a table
+CREATE TABLE Student (
+    ID INT,
+    Name VARCHAR(50),
+    Age INT
+);
+
+-- 2. ALTER: Add a new column
+ALTER TABLE Student
+ADD City VARCHAR(30);
+
+-- 3. RENAME: Rename the table
+RENAME TABLE Student TO Student_Details;
+
+-- 4. TRUNCATE: Delete all records
+TRUNCATE TABLE Student_Details;
+
+-- 5. DROP: Delete the entire table
+DROP TABLE Student_Details;
