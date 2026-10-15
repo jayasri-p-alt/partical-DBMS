@@ -1,0 +1,51 @@
+
+CREATE TABLE Student (
+    ID INT,
+    Name VARCHAR(30),
+    Mark INT
+);
+
+INSERT INTO Student VALUES (1, 'Jaya', 85);
+INSERT INTO Student VALUES (2, 'Priya', 45);
+INSERT INTO Student VALUES (3, 'Ravi', 70);
+
+DELIMITER //
+
+CREATE PROCEDURE Mark_Analysis()
+BEGIN
+    DECLARE done INT DEFAULT 0;
+    DECLARE sname VARCHAR(30);
+    DECLARE smark INT;
+
+    DECLARE cur CURSOR FOR
+        SELECT Name, Mark FROM Student;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND
+        SET done = 1;
+
+    OPEN cur;
+
+    read_loop: LOOP
+        FETCH cur INTO sname, smark;
+
+        IF done = 1 THEN
+            LEAVE read_loop;
+        END IF;
+
+        IF smark >= 50 THEN
+            SELECT sname AS Name,
+                   smark AS Mark,
+                   'PASS' AS Result;
+        ELSE
+            SELECT sname AS Name,
+                   smark AS Mark,
+                   'FAIL' AS Result;
+        END IF;
+    END LOOP;
+
+    CLOSE cur;
+END //
+
+DELIMITER ;
+
+CALL Mark_Analysis();
