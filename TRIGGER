@@ -1,0 +1,20 @@
+
+CREATE TABLE Student (
+    ID INT,
+    Name VARCHAR(50)
+);
+
+DELIMITER //
+
+CREATE TRIGGER before_insert_student
+BEFORE INSERT ON Student
+FOR EACH ROW
+BEGIN
+    SET NEW.Name = UPPER(NEW.Name);
+END //
+
+DELIMITER ;
+
+INSERT INTO Student VALUES (1, 'jayasri');
+
+SELECT * FROM Student;
